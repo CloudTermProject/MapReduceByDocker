@@ -105,7 +105,7 @@ docker run -it --entrypoint /bin/sh -v $(pwd)/input:/input -v $(pwd)/output:/out
 cat output/output.txt | sort > output/reduce_input.txt && cat output/reduce_input.txt
 ```
 
-output.txt에 저장된 데이터를 sorting 하여 reduce_input에 저장
+- output.txt에 저장된 데이터를 sorting 하여 reduce_input에 저장
 
 ### 7. reduce 함수 실행 (mapreduce 디렉토리에서 실행)
 ```
@@ -115,7 +115,7 @@ docker run -it --entrypoint /bin/sh -v $(pwd)/output:/output reduce-container -c
 - reduce 실행 결과는 final_output에 저장됨
 
 ### 8. 결과 확인
-output에서 final_output 파일을 확인
+- output에서 final_output 파일을 확인
 
 ---
 ## 2. 실행 예시
