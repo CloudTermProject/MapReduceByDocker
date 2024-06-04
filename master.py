@@ -4,8 +4,8 @@ import os
 
 client = docker.from_env()
 cwd = os.getcwd()                # Current Working Directory
-inputpath = "./data.txt"        # input 파일
-split_size = 10000              # 한 컨테이너에서 처리할 단위.(byte)
+inputpath = "./bible.txt"        # input 파일
+split_size = 800000             # 한 컨테이너에서 처리할 단위.(byte)
 
 #-------- dockerfile image build ------#
 
@@ -65,13 +65,19 @@ with open("intermediate.bin",'wb') as file:
     pickle.dump(intermediate, file)
 
 # ----------- Create Reduce Container ------------#
-reduce_num = len(intermediate)
+reduce_num = 5 #len(intermediate)
+
+key_num = len(intermediate)
+
+ind = list(range(0,key_num,key_num // reduce_num + 1))
+ind.append(key_num)
 
 reducecontainers = []
 
 print("Result Container")
 for i in range(reduce_num):
-    reducecontainers.append(client.containers.run("mapreduceimg","python3 reducer.py "+str(i),detach=True,volumes=[cwd+':/home/python/src']))
+    argv = " {} {}".format(ind[i],ind[i+1])
+    reducecontainers.append(client.containers.run("mapreduceimg","python3 reducer.py "+argv,detach=True,volumes=[cwd+':/home/python/src']))
     print(reducecontainers[i])
     
 #----------- Result -------------#
@@ -82,7 +88,7 @@ result = []
 while(complete_n != reduce_num):
     for i in range(len(reducecontainers)):
         if complete[i] == False and reducecontainers[i].logs() != b'': 
-            result.append(eval(reducecontainers[i].logs())) # 결과.
+            result.extend(eval(reducecontainers[i].logs())) # 결과.
             complete[i] = True
             complete_n += 1
 

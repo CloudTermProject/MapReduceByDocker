@@ -5,7 +5,7 @@
 def map(key, value):
     d = []
     for word in value.strip().split():
-        d.append((word[0], 1))
+        d.append((word, 1))
     return d
 
 #reduce
