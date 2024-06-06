@@ -70,7 +70,7 @@ reduce_num = 5 #len(intermediate)
 
 key_num = len(intermediate)
 
-ind = list(range(0,key_num,key_num // reduce_num + 1))
+ind = list(range(0,key_num,key_num // reduce_num - 1))
 ind.append(key_num)
 
 reducecontainers = []
