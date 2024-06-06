@@ -1,6 +1,7 @@
 
 import docker
 import os
+import string
 
 client = docker.from_env()
 cwd = os.getcwd()                # Current Working Directory
@@ -22,7 +23,7 @@ with open(inputpath,"r") as file:
     for i in range(split_size, filesize,split_size):
         file.seek(i, 0)  # 경계로 감
         peek = file.read(1) # 경계 글자를 읽음
-        while(peek != " "): # 그것이 공백이 아닐 때까지 계속 읽음
+        while(peek not in string.whitespace): # 그것이 공백이 아닐 때까지 계속 읽음
             peek = file.read(1)
         offsets.append(file.tell()) # 문자가 공백일 때의 offset을 기록
 
