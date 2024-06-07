@@ -7,10 +7,10 @@ import pickle
 
 
 client = docker.from_env()       # Docker 연결
-cwd = os.getcwd()                # Current Working Directory
+cwd = os.getcwd()             # Current Working Directory
 
 #------------- parameters -------------#
-inputpath = "./data_bible.txt"     # input 파일
+inputpath = "./src/data_bible.txt"     # input 파일 위치
 split_size = 800_000                  # 한 컨테이너에서 처리할 단위.(byte)
 max_reduce_num = 4                # 생성할 최대 reduce 컨테이너의 수(원하는 만큼 생성되지 않을 수 있음)
 
@@ -51,7 +51,7 @@ print("Creating Map Container...")
 for i in range(split_num):
     argv = " {} {} {}".format(inputpath,offsets[i], offsets[i+1])                     # 파일 경로와, 읽어야 할 파일의 위치(offset) 전달
     mapcontainers.append(client.containers.run("mapreduceimg",                        # mapreduce를 수행하는 컨테이너 이미지
-                                               "python3 mapper.py" + argv,            # 컨테이너마다 mapper.py를 실행하고 argv를 전달
+                                               "python3 src/mapper.py" + argv,            # 컨테이너마다 mapper.py를 실행하고 argv를 전달
                                                detach=True,                           # 백그라운드 모드에서 동작
                                                volumes=[cwd+':/home/python/src']))    # 현재 디렉토리를 볼륨 마운트 시킴
     print(mapcontainers[i])        # 백그라운드 모드에서 실행할 시, client.containers.run()의 결과는 container id를 나타냄.
@@ -112,7 +112,7 @@ print("Creating Reduce Container...")
 for i in range(len(div) - 1):
     argv = " {} {}".format(div[i],div[i+1])                                             # 인자로, intermediate 데이터를 얼마나 처리해야하는지 전달
     reducecontainers.append(client.containers.run("mapreduceimg",                       # mapreduce를 수행하는 컨테이너 이미지
-                                                  "python3 reducer.py" + argv,          # 컨테이너마다 reducer.py를 실행하고 argv를 전달
+                                                  "python3 src/reducer.py" + argv,          # 컨테이너마다 reducer.py를 실행하고 argv를 전달
                                                   detach=True,                          # 백그라운드 모드에서 동작
                                                   volumes=[cwd+':/home/python/src']))   # 현재 디렉토리를 볼륨 마운트
     print(reducecontainers[i])
