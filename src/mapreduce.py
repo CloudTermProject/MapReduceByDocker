@@ -45,3 +45,14 @@ def map_len2(key, value):
     return d
 def reduce_len2(key, value):
     return key
+
+# 알파벳 빈도 파악하기
+def map_alphabetcount(key, value):
+    d = []
+    for word in value.strip().split():
+        for alphabet in word:
+            if alphabet.isalpha():
+                d.append((alphabet, 1))
+    return d
+def reduce_alphabetcount(key, value):
+    return key, sum(value)
