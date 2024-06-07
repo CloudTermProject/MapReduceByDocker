@@ -10,9 +10,9 @@ client = docker.from_env()       # Docker 연결
 cwd = os.getcwd()                # Current Working Directory
 
 #------------- parameters -------------#
-inputpath = "./data_word.txt"     # input 파일
-split_size = 20000                  # 한 컨테이너에서 처리할 단위.(byte)
-max_reduce_num = 5                # 생성할 최대 reduce 컨테이너의 수(원하는 만큼 생성되지 않을 수 있음)
+inputpath = "./data_bible.txt"     # input 파일
+split_size = 800_000                  # 한 컨테이너에서 처리할 단위.(byte)
+max_reduce_num = 4                # 생성할 최대 reduce 컨테이너의 수(원하는 만큼 생성되지 않을 수 있음)
 
 
 #-------- dockerfile image build ------#
