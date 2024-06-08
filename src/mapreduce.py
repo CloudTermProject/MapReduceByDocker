@@ -2,11 +2,11 @@
 
 #map function
 def map(key, value):     
-    return map_headcount(key,value)
+    return map_wordcount(key,value)
 
 #reduce function
 def reduce(key, value): 
-    return reduce_headcount(key, value)
+    return reduce_wordcount(key, value)
 
 #--------------------------------------------#
 # 단어의 빈도 확인하기
