@@ -1,19 +1,20 @@
-<u> 최종 보고서 </u>
+# 최종 보고서
 
 ## 프로젝트명 
 
-Map-Reduce와 Docker를 이용한 word counter
+도커로 구현한 map reduce
 
 ## 멤버이름, 멤버별 담당 파트 
 
-조승현: 통신규약 정하기, Mapper 구현, Master 구현, Auto-Scaling 구현 
-조수현: 통신규약 정하기, Mapper 구현, Master 구현, Auto-Scaling 구현 
-김정민: 통신규약 정하기, Mapper 구현, Reducer 구현, Auto-Scaling구현 
-김지훈: 통신규약 정하기, Mapper 구현, Reducer 구현, Auto-Scaling구현 
+- 조승현: 통신규약 정하기, Mapper 구현, Master 구현, Auto-Scaling 구현, 최종 결과물 동영상 촬영
+- 조수현: 통신규약 정하기, Mapper 구현, Master 구현, Auto-Scaling 구현, 최종 결과물 PPT 제작
+- 김정민: 통신규약 정하기, Mapper 구현, Reducer 구현, Auto-Scaling구현, 최종 보고서 작성
+- 김지훈: 통신규약 정하기, Mapper 구현, Reducer 구현, Auto-Scaling구현, 최종 결과물 소스코드 작성
 
 ## 프로젝트 소개
 
 맵 리듀스 기술과 도커 컨테이너 기술을 이용한 word counter 서비스이다.
+
 사용자에게서 입력받은 대용량 파일(txt파일)에서 한 번이라도 출현하는 word들을 추출하고, 각각의 빈도를 짝지어 튜플(tuple)로 출력하는 시스템 구현에 목적을 둔다. '맵리듀스(MapReduce)'알고리즘과 auto-scaling 메커니즘을  도커 컨테이너로 구현한 것이 특징이다.
 
 # 프로젝트 필요성 소개
@@ -29,34 +30,39 @@ Map-Reduce와 Docker를 이용한 word counter
 # 관련 기술 / 논문 / 특허 조사 내용
 
 1) 기술
-<ul> Hadoop
-설명: 아파치 하둡(Apache Hadoop)은 오픈 소스 분산 컴퓨팅 프레임워크로, MapReduce 모델을 기반으로 하둡 분산 파일 시스템(HDFS)과 함께 대용량 데이터 처리에 사용됩니다. 특징: 오픈 소스, HDFS를 통해 고가용성 데이터 저장, YARN을 통한 리소스 관리, 다양한 데이터 형식의 지원 (CSV, JSON, Parquet, Avro 등)
+- Hadoop
+  - 설명: 아파치 하둡(Apache Hadoop)은 오픈 소스 분산 컴퓨팅 프레임워크로, MapReduce 모델을 기반으로 하둡 분산 파일 시스템(HDFS)과 함께 대용량 데이터 처리에 사용됩니다.
+  - 특징: 오픈 소스, HDFS를 통해 고가용성 데이터 저장, YARN을 통한 리소스 관리, 다양한 데이터 형식의 지원 (CSV, JSON, Parquet, Avro 등)
 
-<ul> Spark
-설명: 아파치 스파크(Apache Spark)는 메모리 기반의 분산 데이터 처리 엔진으로, MapReduce 모델을 확장하여 인메모리 컴퓨팅을 통한 빠른 데이터 처리를 지원합니다. 특징: 배치 및 스트리밍 데이터 처리 통합, 인메모리 컴퓨팅을 통한 빠른 데이터 처리, 다양한 언어 지원 (Java, Scala, Python, R)
+- Spark
+  - 설명: 아파치 스파크(Apache Spark)는 메모리 기반의 분산 데이터 처리 엔진으로, MapReduce 모델을 확장하여 인메모리 컴퓨팅을 통한 빠른 데이터 처리를 지원합니다.
+  - 특징: 배치 및 스트리밍 데이터 처리 통합, 인메모리 컴퓨팅을 통한 빠른 데이터 처리, 다양한 언어 지원 (Java, Scala, Python, R)
 
-<ul> Dyrad
-설명: 마이크로소프트의 Dryad는 MapReduce와 유사한 데이터 병렬 처리 프레임워크로, DAG(Directed Acyclic Graph) 기반의 작업을 분산 환경에서 병렬로 처리합니다.
-특징: DAG 기반의 데이터 흐름, 다양한 데이터 소스와의 연동, LINQ 언어 지원
+- Dyrad
+  - 설명: 마이크로소프트의 Dryad는 MapReduce와 유사한 데이터 병렬 처리 프레임워크로, DAG(Directed Acyclic Graph) 기반의 작업을 분산 환경에서 병렬로 처리합니다.
+  - 특징: DAG 기반의 데이터 흐름, 다양한 데이터 소스와의 연동, LINQ 언어 지원
 
 2) 논문 
-Dean, Jeffrey, and Sanjay Ghemawat. "MapReduce: simplified data processing on large clusters." *Communications of the ACM* 51.1 (2008): 107-113
+- Dean, Jeffrey, and Sanjay Ghemawat. "MapReduce: simplified data processing on large clusters." *Communications of the ACM* 51.1 (2008): 107-113
 
-Shvachko, Konstantin, Hairong Kuang, Sanjay Radia, and Robert Chansler. "The Hadoop distributed file system." 2010 IEEE 26th symposium on mass storage systems and technologies (MSST). IEEE, 2010.
+- Shvachko, Konstantin, Hairong Kuang, Sanjay Radia, and Robert Chansler. "The Hadoop distributed file system." 2010 IEEE 26th symposium on mass storage systems and technologies (MSST). IEEE, 2010.
 
-Matei Zaharia, Mosharaf Chowdhury, Tathagata Das, Ankur Dave, Justin Ma, Murphy McCauley, Michael J. Franklin, Scott Shenker, Ion Stoica. “Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing”
+- Matei Zaharia, Mosharaf Chowdhury, Tathagata Das, Ankur Dave, Justin Ma, Murphy McCauley, Michael J. Franklin, Scott Shenker, Ion Stoica. “Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing”
 
-Zaharia, Matei, Mosharaf Chowdhury, Michael J. Franklin, Scott Shenker, and Ion Stoica. "Spark: Cluster computing with working sets." Proceedings of the 2nd USENIX conference on Hot topics in cloud computing. Vol. 10. 2010
+- Zaharia, Matei, Mosharaf Chowdhury, Michael J. Franklin, Scott Shenker, and Ion Stoica. "Spark: Cluster computing with working sets." Proceedings of the 2nd USENIX conference on Hot topics in cloud computing. Vol. 10. 2010
 
-Isard, Michael, Mihai Budiu, Yuan Yu, Andrew Birrell, and Dennis Fetterly. "Dryad: distributed data-parallel programs from sequential building blocks." ACM SIGOPS operating systems review 41, no. 3 (2007): 59-72.
+- Isard, Michael, Mihai Budiu, Yuan Yu, Andrew Birrell, and Dennis Fetterly. "Dryad: distributed data-parallel programs from sequential building blocks." ACM SIGOPS operating systems review 41, no. 3 (2007): 59-72.
 
 3) 특허
-US Patent 7650331 B1: Jeffrey Dean, Sanjay Ghemawat, "System and method for efficient large-scale data processing," filed December 21, 2007.
+- US Patent 7650331 B1: Jeffrey Dean, Sanjay Ghemawat, "System and method for efficient large-scale data processing," filed December 21, 2007.
 
 # 프로젝트 개발 결과물 소개
 
 시스템의 전체 구조도는 다음과 같다.
-![system_structure](이미지 경로) -> 이미지 1입니다.
+
+<div align="center">
+  <img src="https://github.com/CloudTermProject/MapReduceByDocker/assets/49471288/f317fe9a-f888-4e69-83cc-a2980f53705a" width="800px" />
+</div>
 
 프로그램 시작 후, map container와 Reduce Container를 생성하기 위한 도커이미지가 존재하는지 확인하고, 없다면 새로 생성한다.
 
@@ -66,7 +72,10 @@ Map container에서는 mapper.py가 실행된다.
 
 map container를 모두 실행한 후에, master.py에서는 각 컨테이너로부터 출력값을 기다린다. 각 컨테이너의 logs()를 호출해서 eval을 통해 값을 받은뒤, 이를 intermediate 변수에 저장한다.
 
-![parameter_passing](이미지 경로) -> 이미지 2입니다.
+<div align="center">
+  <img src="https://github.com/CloudTermProject/MapReduceByDocker/assets/49471288/f40278be-dda6-4750-b800-b0f27b136526" width="800px" />
+</div>
+
 
 모든 map 컨테이너의 결과 값을 받아왔다면, intermediate 데이터를 정렬한 뒤, 갯수에 맞게 reduce container를 생성하여 key, list(value)를 전달한다. 
 
@@ -77,15 +86,18 @@ map container를 모두 실행한 후에, master.py에서는 각 컨테이너로
 
 이를 플로우 차트로 나타내면 다음과 같다.
 
-![system_flowControl](이미지 경로) -> 이미지 3입니다.
+<div align="center">
+  <img src="https://github.com/CloudTermProject/MapReduceByDocker/assets/49471288/956ab79c-8737-4e84-9dc3-ead39db13ece" width="500px" />
+</div>
+
 
 
 
 
 # 개발 결과물을 사용하는 방법 소개
 
-1. 사용자는 분석하고 싶은 txt파일을 프로젝트 src 폴더에 업로드한 후 master.py의 input path를 수정한다.
-2. 프로젝트 최상위 디렉토리에서 python3 src/master.py 로 master.py를 실행한다. (import docker에서 막히는 경우, pip install docker를 통해 라이브러리를 설치해야함)
+1. 사용자는 분석하고 싶은 txt파일을 프로젝트 폴더에 업로드한 후 master.py의 input path를 수정한다.
+2. 프로젝트 최상위 디렉토리에서 python3 master.py 로 master.py를 실행한다. (import docker에서 막히는 경우, pip install docker를 통해 라이브러리를 설치해야하 할 수 있음)
 3. 실시간으로 도커 컨테이너가 실행되고 있는 환경이 출력된다. 
 4. 수행하는 컨테이너들이 완수 하면, txt파일의 모든 단어들이 빈도 수와 함께 튜플로 출력된다.
 5. 컨테이너에서 실행되는 파일(mapper.py, reducer.py) 를 수정해야하는 경우, 기존에 만들어진 map reduceimg 이미지를 도커에서 삭제해야함. (삭제 후 master.py를 실행하면 재빌드 됨.)
