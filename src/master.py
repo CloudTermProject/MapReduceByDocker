@@ -18,7 +18,7 @@ max_reduce_num = 4                # 생성할 최대 reduce 컨테이너의 수(
 #-------- dockerfile image build ------#
 
 if len(client.images.list("mapreduceimg")) == 0: #만약 mapreduce를 위한 image가 없는 경우
-    client.images.build(path=cwd,tag="mapreduceimg")  #새로 만들기
+    client.images.build(path=cwd+"/src",tag="mapreduceimg")  #새로 만들기
 
 # ------------ Splitting --------------#
 # input data가 단어들의 집합인 경우, 입력파일을 나눌 때 단어가 쪼개지지 않아야 한다.
