@@ -2,7 +2,7 @@
 
 ## 프로젝트명 
 
-도커로 구현한 map reduce
+Map-Reduce와 Docker를 이용한 word counter
 
 ## 멤버이름, 멤버별 담당 파트 
 
@@ -96,8 +96,8 @@ map container를 모두 실행한 후에, master.py에서는 각 컨테이너로
 
 # 개발 결과물을 사용하는 방법 소개
 
-1. 사용자는 분석하고 싶은 txt파일을 프로젝트 폴더에 업로드한 후 master.py의 input path를 수정한다.
-2. 프로젝트 최상위 디렉토리에서 python3 master.py 로 master.py를 실행한다. (import docker에서 막히는 경우, pip install docker를 통해 라이브러리를 설치해야하 할 수 있음)
+1. 사용자는 분석하고 싶은 txt파일을 프로젝트 src폴더에 업로드한 후 master.py의 input path를 수정한다.
+2. 프로젝트 최상위 디렉토리에서 python3 src/master.py 로 master.py를 실행한다. (import docker에서 막히는 경우, pip install docker를 통해 라이브러리를 설치해야 할 수 있음)
 3. 실시간으로 도커 컨테이너가 실행되고 있는 환경이 출력된다. 
 4. 수행하는 컨테이너들이 완수 하면, txt파일의 모든 단어들이 빈도 수와 함께 튜플로 출력된다.
 5. 컨테이너에서 실행되는 파일(mapper.py, reducer.py) 를 수정해야하는 경우, 기존에 만들어진 map reduceimg 이미지를 도커에서 삭제해야함. (삭제 후 master.py를 실행하면 재빌드 됨.)
